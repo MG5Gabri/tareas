@@ -1,40 +1,38 @@
-function crearTarea(nombre) {
-    let tarea = document.createElement('div');
-    tarea.className = "tarea";
+import { todasLasTareas } from "./data.js";
 
-    let dTarea = document.createElement('div');
-    dTarea.className = "divTarea";
+function item(contenido) {
+    let div = document.createElement('div');
+    div.className = "divTarea";
 
-    let checktarea = document.createElement('div');
-    checktarea.className = "checkBox";
+    
+    let checkbox = document.createElement('div')
+    checkbox.className = "checkBox"
+    div.appendChild(checkbox)
     let check = document.createElement('div');
     check.className = "check";
-    checktarea.appendChild(check);
+    checkbox.appendChild(check);
+
 
     let nametarea = document.createElement('div');
     nametarea.className = "nameTarea";
-    nametarea.innerText = nombre;
+    nametarea.innerText = contenido;
+    div.appendChild(nametarea)
 
-    dTarea.appendChild(checktarea);
-    dTarea.appendChild(nametarea);
-    tarea.appendChild(dTarea);
 
-    return tarea;
+    return div;
 }
 
-function agregarTareas(listaDeTareas) {
-    let contenedor = document.getElementById("contenedorTareas");
-    for (let i = 0; i < listaDeTareas.length; i++) {
-        contenedor.appendChild(crearTarea(listaDeTareas[i]));
-    }
-}
+function crearTarea() {
+    let div = document.createElement('div');
+    div.className = "tarea";
 
-window.onload = function() {
-    if (typeof listaDeTareas !== 'undefined') {
-        agregarTareas(listaDeTareas);
-    } else {
-        console.error("La lista de tareas no está definida. Asegúrate de que 'data.js' está correctamente vinculado.");
-    }
-};
+    let tareas = todasLasTareas();
+
+    tareas.forEach((letra) => {
+        div.appendChild(item(letra));
+    });
+
+    return div;
+}
 
 export {crearTarea}

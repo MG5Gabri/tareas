@@ -1,4 +1,5 @@
-const listaDeTareas = [
+function todasLasTareas() {
+let listaDeTareas = [
     "Hacer la cama",
     "Lavar los platos",
     "Sacar la basura",
@@ -11,4 +12,7 @@ const listaDeTareas = [
     "Pagar las cuentas"
 ];
 
-export {listaDeTareas}
+return listaDeTareas
+}
+
+export {todasLasTareas}

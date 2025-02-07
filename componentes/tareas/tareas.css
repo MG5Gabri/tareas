@@ -3,8 +3,10 @@
     width: 100%;
 
     padding: 2rem;
+    gap: 1rem;
 }
 .divTarea {
+    margin-top: 2rem;
     height: 3rem;
     width: 100%;
     background-color: rgb(219, 214, 214);
