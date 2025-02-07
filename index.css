@@ -1,4 +1,11 @@
 #root{
     width: 100%;
     height: 100vh;
+
+    margin: auto;
+    max-width: 40.3rem;
+    background-color: rgba(127, 255, 212, 0.356);
+
+    display: grid;
+    grid-template-rows: 8rem 1fr 8rem;
 }
