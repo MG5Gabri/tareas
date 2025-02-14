@@ -12,6 +12,10 @@ function item(contenido) {
     check.className = "check";
     checkbox.appendChild(check);
 
+    div.addEventListener("click", () => {
+        check.classList.toggle("marcado");
+        nametarea.classList.toggle("tachado");
+    });
 
     let nametarea = document.createElement('div');
     nametarea.className = "nameTarea";
