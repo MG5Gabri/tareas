@@ -1,34 +1,10 @@
 import { todasLasTareas } from "./data.js";
-
-function item(contenido) {
-    let div = document.createElement('div');
-    div.className = "divTarea";
-
-    
-    let checkbox = document.createElement('div')
-    checkbox.className = "checkBox"
-    div.appendChild(checkbox)
-    let check = document.createElement('div');
-    check.className = "check";
-    checkbox.appendChild(check);
-
-    div.addEventListener("click", () => {
-        check.classList.toggle("marcado");
-        nametarea.classList.toggle("tachado");
-    });
-
-    let nametarea = document.createElement('div');
-    nametarea.className = "nameTarea";
-    nametarea.innerText = contenido;
-    div.appendChild(nametarea)
-
-
-    return div;
-}
+import { item } from "./itemTarea.js";
 
 function crearTarea() {
     let div = document.createElement('div');
     div.className = "tarea";
+    div.id = "contenedorTareas";
 
     let tareas = todasLasTareas();
 

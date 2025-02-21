@@ -1,3 +1,5 @@
+import { agregarNuevaTarea } from "./funcionesFormulario.js"
+
 function crearFormulario() {
     let formulario = document.createElement('div')
     formulario.className = "formulario"
@@ -6,10 +8,20 @@ function crearFormulario() {
     cuadroFormulario.className = "divFormulario"
         let task = document.createElement ('div')
         task.className = "divTask"
-        task.innerText = "Write a task"
+        task.contentEditable = "true"
         let add = document.createElement ('div')
         add.className = "addButtom"
         add.innerText = "Add"
+
+        add.addEventListener("click", function () {
+            let nuevaTarea = task.innerText.trim();
+            if (nuevaTarea !== "") {
+                agregarNuevaTarea(nuevaTarea);
+                task.innerText = ""; // Limpiar el campo después de agregar
+            } else {
+                console.log("Introduce una tarea antes de agregar.");
+            }
+        });    
 
     cuadroFormulario.appendChild(task)
     cuadroFormulario.appendChild(add)    

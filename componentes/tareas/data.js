@@ -1,4 +1,3 @@
-function todasLasTareas() {
 let listaDeTareas = [
     "Hacer la cama",
     "Lavar los platos",
@@ -12,7 +11,8 @@ let listaDeTareas = [
     "Pagar las cuentas"
 ];
 
-return listaDeTareas
+function todasLasTareas() {
+    return listaDeTareas;
 }
 
-export {todasLasTareas}
+export { listaDeTareas, todasLasTareas };
