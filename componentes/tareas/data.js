@@ -1,3 +1,15 @@
+function consultarTareas() {
+    fetch('http://localhost:3000/tareas')
+      .then(response => {
+        console.log(response); // Aquí puedes ver la response completa
+        return response.text();
+      })
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
+  
+
+
 let listaDeTareas = [
     "Hacer la cama",
     "Lavar los platos",
@@ -11,8 +23,5 @@ let listaDeTareas = [
     "Pagar las cuentas"
 ];
 
-function todasLasTareas() {
-    return listaDeTareas;
-}
 
-export { listaDeTareas, todasLasTareas };
+export { listaDeTareas, consultarTareas };
