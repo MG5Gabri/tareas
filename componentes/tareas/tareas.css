@@ -4,6 +4,7 @@
 
     padding: 2rem;
     gap: 1rem;
+    grid-row: 2/3;
 }
 .divTarea {
     margin-top: 2rem;
