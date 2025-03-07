@@ -1,14 +1,15 @@
 import { crearFormulario } from "./componentes/formulario/formulario.js"
 import { crearHeader } from "./componentes/header/header.js"
-import { crearTarea } from "./componentes/tareas/tareas.js"
+import { consultarTareas } from "./componentes/tareas/tareas.js"
 
 let DOM = document.querySelector("#root")
 
 function cargarDOM(DOM) {
 
-    DOM.appendChild(crearHeader())
-    DOM.appendChild(crearTarea())
-    DOM.appendChild(crearFormulario())
+    DOM.appendChild(crearHeader());
+    consultarTareas();
+    DOM.appendChild(crearFormulario());
+    
 
     return DOM
 }
@@ -16,4 +17,3 @@ function cargarDOM(DOM) {
 cargarDOM(DOM)
 
 
-console.log("Ejecutando main.js")

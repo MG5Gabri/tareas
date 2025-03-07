@@ -1,22 +1,28 @@
-import { consultarTareas, listaDeTareas } from "./data.js";
 import { item } from "./itemTarea.js";
 
-function crearTarea() {
-    
-    let listaTareas = consultarTareas();
-    console.log(listaTareas)
+function consultarTareas() {
+    fetch('http://localhost:3000/tareas')
+      .then(response => response.json())
+      .then(data => cargarTareas(data))
+      .catch(error => console.error('Error:', error));
+  }
 
-    let div = document.createElement('div');
-    div.className = "tarea";
-    div.id = "contenedorTareas";
-
-    let tareas = listaDeTareas;
-
-    tareas.forEach((letra) => {
-        div.appendChild(item(letra));
-    });
-
-    return div;
+function cargarTareas(data) {
+    let DOM = document.querySelector("#root")
+    DOM.appendChild(renderTarea(data))
 }
 
-export {crearTarea}
+function renderTarea(data) {
+    
+    let div = document.createElement('div')
+    div.className = "tareas"
+
+    data.forEach((e)=>{
+        console.log(e)
+        div.appendChild(item(e.nombre_tarea));
+    });
+
+    return div
+}
+
+export {consultarTareas }

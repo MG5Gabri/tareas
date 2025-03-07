@@ -1,6 +1,6 @@
 import { marcarTarea } from "./funcionesTarea.js";
 
-function item(contenido) {
+function item(tarea) {
     let div = document.createElement('div');
     div.className = "divTarea";
 
@@ -14,7 +14,7 @@ function item(contenido) {
 
     let nametarea = document.createElement('div');
     nametarea.className = "nameTarea";
-    nametarea.innerText = contenido;
+    nametarea.innerText = tarea;
     div.appendChild(nametarea);
 
     marcarTarea(div);
