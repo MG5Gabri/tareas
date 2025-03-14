@@ -38,3 +38,38 @@
     justify-content: center;
     font-size: 2rem;
 }
+
+.formulario2 {
+    width: 100%;
+    height: 100%;
+    grid-row: 4/5;
+    margin-top: 20px;
+
+}
+
+.divFormulario2 {
+    max-width: 300px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5rem 5rem 4rem;
+    gap: 0.5rem 4rem;
+    column-gap: 4rem;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    grid-column: 1/3;
+}
+
+.loginButton, .registroButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
