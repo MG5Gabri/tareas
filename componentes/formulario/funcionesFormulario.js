@@ -1,24 +1,50 @@
-import { listaDeTareas } from "../tareas/data.js";
 import { item } from "../tareas/itemTarea.js";
 
-function agregarNuevaTarea(tarea) {
-    if (tarea.trim() !== "") {
-        listaDeTareas.push(tarea);
-        
-        // Crear el nuevo elemento de tarea
-        let nuevaTareaElemento = item(tarea);
+function agregarNuevaTarea(nombreTarea) {
+    let nuevaTarea = {
+        nombre_tarea: nombreTarea,
+        estado: "falso"
+    };
 
-        // Agregarlo al contenedor de tareas en el HTML
-        let contenedorTareas = document.getElementById("contenedorTareas");
-        if (contenedorTareas) {
-            contenedorTareas.appendChild(nuevaTareaElemento);
-        } else {
-            console.error("No se encontró el contenedor de tareas en el HTML.");
+    fetch("http://localhost:3000/tareas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(nuevaTarea)
+    })
+    .then(response => response.json())
+    .then(tareaGuardada => {
+        console.log("✅ Tarea agregada:", tareaGuardada);
+
+        if (!tareaGuardada.id) {
+            console.error("❌ Error: La tarea guardada no tiene un ID.");
+            return;
         }
-    } else {
-        console.log("No se puede agregar una tarea vacía.");
-    }
+
+        let tareaElemento = item(tareaGuardada);
+        const listaTareas = document.querySelector("#listaTareas");
+
+        if (listaTareas) {
+            listaTareas.appendChild(tareaElemento);
+        }
+
+        // Aquí renderizamos todas las tareas (incluyendo la recién agregada)
+        renderNewTarea();  // Llama a esta función si es necesario re-renderizar las tareas completas
+    })
+    .catch(error => console.error("❌ Error al agregar tarea:", error));
 }
 
-export { agregarNuevaTarea };
+function renderNewTarea() {
+    fetch("http://localhost:3000/tareas")
+    .then(response => response.json())
+    .then(tareas => {
+        const listaTareas = document.querySelector("#listaTareas");
+        listaTareas.innerHTML = '';  // Limpiar las tareas anteriores
+        tareas.forEach(tarea => {
+            let tareaElemento = item(tarea);
+            listaTareas.appendChild(tareaElemento);
+        });
+    })
+    .catch(error => console.error("❌ Error al cargar tareas:", error));
+}
 
+export { agregarNuevaTarea, renderNewTarea };

@@ -13,7 +13,7 @@
     background-color: rgb(219, 214, 214);
 
     display: grid;
-    grid-template-columns: 5rem 1fr;
+    grid-template-columns: 5rem 1fr 5rem;
 }
 .checkBox {
     display: flex;
@@ -44,4 +44,19 @@
 .tachado {
     text-decoration: line-through;
     color: gray;
+}
+
+.checkBox2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btnEliminar {
+    width: 3rem;
+    height: 2rem;
+    background: white;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
 }
